@@ -21,6 +21,19 @@ public class QueenBoard{
     }
     return true;
   }
+  private boolean removeQueen(int r, int c){
+    board[r][c] -= 4;
+    for (int i = 0; r + i < board.length; i ++){
+      board[r + i][c] += 1;
+    }
+    for (int i = 0; r + i < board.length && c + i < board.length; i ++){
+      board[r + i][c + i] += 1;
+    }
+    for (int i = 0; r + i < board.length && c - i >= 0; i ++){
+      board[r + i][c - i] += 1;
+    }
+    return true;
+  }
   public String toString(){
     String newstr = "";
     for (int i = 0; i < board.length; i ++){
