@@ -62,7 +62,7 @@ public class QueenBoard{
     return solveR(0);
   }
   public boolean solveR(int row){
-    if (row > board.length){
+    if (row == board.length){
       return true;
     }
     for (int i = 0; i < board.length; i ++){
@@ -74,7 +74,7 @@ public class QueenBoard{
           removeQueen(row, i);
         }
       }
-      return false;
     }
+    return false;
   }
 }
