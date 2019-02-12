@@ -59,6 +59,22 @@ public class QueenBoard{
     return newstr;
   }
   public boolean solve(){
-
+    return solveR(0);
+  }
+  public boolean solveR(int row){
+    if (row > board.length){
+      return true;
+    }
+    for (int i = 0; i < board.length; i ++){
+      if (board[row][i] == 0){
+        if (addQueen(row, i)){
+          if (solveR(row + 1)){
+            return true;
+          }
+          removeQueen(row, i);
+        }
+      }
+      return false;
+    }
   }
 }
