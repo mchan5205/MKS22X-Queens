@@ -56,6 +56,13 @@ public class QueenBoard{
     return newstr;
   }
   public boolean solve(){
+    for (int r = 0; r < board.length; r ++){
+      for (int c = 0; c < board.length; c ++){
+        if (board[r][c] != 0){
+          throw new IllegalStateException();
+        }
+      }
+    }
     return solveR(0);
   }
   public boolean solveR(int row){
@@ -75,6 +82,13 @@ public class QueenBoard{
     return false;
   }
   public int countSolutions(){
+    for (int r = 0; r < board.length; r ++){
+      for (int c = 0; c < board.length; c ++){
+        if (board[r][c] != 0){
+          throw new IllegalStateException();
+        }
+      }
+    }
     return countSolutionsh(0);
   }
   public int countSolutionsh(int row){
