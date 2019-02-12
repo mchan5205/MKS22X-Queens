@@ -45,13 +45,10 @@ public class QueenBoard{
     for (int i = 0; i < board.length; i ++){
       for (int x = 0; x < board[i].length; x++){
         if (board[i][x] == 1){
-          newstr += "Q";
+          newstr += "Q ";
         }
-        if (board[i][x] < 0){
-          newstr += "x";
-        }
-        if (board[i][x] == 0){
-          newstr += "_";
+        if (board[i][x] <= 0){
+          newstr += "_ ";
         }
       }
       newstr += "\n";
@@ -76,5 +73,28 @@ public class QueenBoard{
       }
     }
     return false;
+  }
+  public int countSolutions(){
+    return countSolutionsh(0);
+  }
+  public int countSolutionsh(int row){
+    int count = 0;
+    if (row == board.length - 1){
+      for (int x = 0 ; x < board.length; x ++){
+        if (addQueen(row, x)){
+          removeQueen(row, x);
+          count += 1;
+        }
+      }
+    }
+    else{
+      for (int i = 0; i < board.length; i ++){
+        if (addQueen(row, i)){
+          count += countSolutionsh(row + 1);
+          removeQueen(row, i);
+        }
+      }
+    }
+    return count;
   }
 }
